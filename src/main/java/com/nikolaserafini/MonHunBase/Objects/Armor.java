@@ -3,7 +3,6 @@ package com.nikolaserafini.MonHunBase.Objects;
 import java.util.LinkedList;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

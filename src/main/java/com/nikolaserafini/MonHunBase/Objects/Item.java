@@ -15,44 +15,66 @@ public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+	private Integer id;				// Item ID
+
+	private String portraitSource;			// Portrait image file location
 	@Column(nullable = false)
-	private String name;
+	private String name;				// Item name
 	@Column
-	private Integer rarity;
+	private Integer rarity;				// Item rarity : 1 - 10
 	@Column
-	private Integer maxAmount;
+	private Integer maxAmount;			// Max carrying item amount
 	@Column
-	private Integer sellValue;
+	private Integer buyValue;			// Buying price
+	@Column
+	private Integer sellValue;			// Selling price
 	@OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-	private LinkedList<Location> placesFound;
+	private LinkedList<Location> placesFound;  	// List regarding info of how the item is found
 	@OneToMany(mappedBy = "armor", fetch = FetchType.LAZY)
-	private LinkedList<DropProperties> howToObtain;
-	
-	public Item(String nam, Integer rare, Integer max, Integer sell) {
-		this.name = nam;
-		this.rarity = rare;
-		this.maxAmount = max;
-		this.sellValue = sell;
+	private LinkedList<DropProperties> howToObtain;	// List regarding info of how the item is dropped from monsters
+
+	/*
+	Default constructor
+	*/
+
+	public Item(Integer id, String name, Integer rarity,
+			Integer maxAmount, Integer buyValue, Integer sellValue) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.rarity = rarity;
+		this.maxAmount = maxAmount;
+		this.buyValue = buyValue;
+		this.sellValue = sellValue;
 		this.placesFound = new LinkedList<Location>();
 		this.howToObtain = new LinkedList<DropProperties>();
 	}
-	
+
+
+	/*
+	Adding to list methods
+	*/
+
 	public boolean addLocation(Location l) {
 		if(this.placesFound.add(l))
 			return true;
 		else
 			return false;
-		
+
 	}
+	
 	public boolean addProperties(DropProperties d) {
 		if(this.howToObtain.add(d))
 			return true;
 		else
 			return false;
 	}
-	
+
+
+	/*
+	Getters and setters
+	*/
+
 	public Integer getId() {
 		return id;
 	}
@@ -95,6 +117,6 @@ public class Item {
 	public void setCarvedFrom(LinkedList<DropProperties> howToObtain) {
 		this.howToObtain = howToObtain;
 	}
-	
-	
+
+
 }
