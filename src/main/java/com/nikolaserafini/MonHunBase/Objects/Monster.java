@@ -12,31 +12,34 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Monster {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+	private Integer id;				//Monster id
+
+	private String portraitSource;			//Portrait image file location
 	@Column(nullable = false)
-	private String name;
+	private String name;				//Monster name
+	@Column(nullable = true)
+	private String monsterClass;			//Class of a monster. Indicates if it's small or large
 	@OneToMany(mappedBy = "monster", fetch = FetchType.LAZY)
-	private LinkedList<Element> elemWeakness;
+	private LinkedList<Element> elemWeakness;	//List of elemental weaknesses
 	@OneToMany(mappedBy = "monster", fetch = FetchType.LAZY)
-	private LinkedList<Element> elemTolerance;
+	private LinkedList<Element> elemTolerance;	//List of elemental tolerances
 	@OneToMany(mappedBy = "monster", fetch = FetchType.LAZY)
-	private LinkedList<String> breakableParts;
-	@OneToMany(mappedBy = "monster", fetch = FetchType.LAZY)
-	private LinkedList<Item> carvableItems;
-	
+	private LinkedList<String> breakableParts;	//List of monster breakable parts
+
+	/*
+	Default constructor
+	*/
 	public Monster(String monName) {
 		this.name = monName;
 		this.elemWeakness = new LinkedList<Element>();
 		this.elemTolerance = new LinkedList<Element>();
 		this.breakableParts = new LinkedList<String>();
-		this.carvableItems = new LinkedList<Item>();
 	}
-	
-	
+
+
 	public boolean addWeakness(String w) {
 		String weakness = w.toUpperCase();
 		try {
@@ -65,20 +68,24 @@ public class Monster {
 		else
 			return false;
 	}
-	public boolean addCarvable(Item item) {
-		if(this.carvableItems.add(item))
-			return true;
-		else
-			return false;
-	}
-	
-	
+
+
+
+	/*
+	Getters and setters
+	*/
 
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getPortraitSource() {
+		return portraitSource;
+	}
+	public void setPortraitSource(String portraitSource) {
+		this.portraitSource = portraitSource;
 	}
 	public String getName() {
 		return name;
@@ -104,12 +111,6 @@ public class Monster {
 	public void setBreakableParts(LinkedList<String> breakableParts) {
 		this.breakableParts = breakableParts;
 	}
-	public LinkedList<Item> getCarvableItems() {
-		return carvableItems;
-	}
-	public void setCarvableItems(LinkedList<Item> carvableItems) {
-		this.carvableItems = carvableItems;
-	}
-	
-	
+
+
 }

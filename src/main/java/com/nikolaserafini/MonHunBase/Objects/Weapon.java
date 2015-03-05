@@ -11,34 +11,41 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Weapon {
-	private enum Element {
-		FIRE,WATER,ICE,THUNDER,POISON,DRAGON,NULL
-	}
-	
+public class Weapon extends Item {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+	private Integer id;				// Weapon id
+
+	private String portraitSource			//Portrait image file location
 	@Column(nullable = false)
-	private String name;
+	private String name;				// Weapon name
 	@Column
-	private Integer atkPower;
+	private Integer atkPower;			// Attack damage
 	@Column
-	private Element element;
+	private Element element;			// Elemental type
 	@Column
-	private Integer elementPower;
+	private Element element_sec;		// Secondary elemental type
 	@Column
-	private String sharpeness;
+	private Integer elementPower;			// Elemental damage
+	@Column
+	private Integer elementPower_sec;		// Secondary elemental damage
+	@Column
+	private String sharpness;			// Sharpness values
+	@Column
+	private String affinity;				// Weapon affinity
+	@Column
+	private Integer slots;				// Number of slots
 	@OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY)
 	private List<Weapon> followingWeaponTree;
-	
+
 	public Weapon(String name, Integer atkPower, String sharpness) {
+		super();
 		this.name = name;
 		this.atkPower = atkPower;
-		this.sharpeness = sharpness;
+		this.sharpness = sharpness;
 	}
-	
+
 
 	public Integer getId() {
 		return id;
@@ -70,11 +77,11 @@ public class Weapon {
 	public void setElementPower(Integer elementPower) {
 		this.elementPower = elementPower;
 	}
-	public String getSharpeness() {
-		return sharpeness;
+	public String getSharpness() {
+		return sharpness;
 	}
-	public void setSharpeness(String sharpeness) {
-		this.sharpeness = sharpeness;
+	public void setSharpness(String sharpeness) {
+		this.sharpness = sharpeness;
 	}
 	public List<Weapon> getFollowingWeaponTree() {
 		return followingWeaponTree;
@@ -82,5 +89,5 @@ public class Weapon {
 	public void setFollowingWeaponTree(List<Weapon> followingWeaponTree) {
 		this.followingWeaponTree = followingWeaponTree;
 	}
-	
+
 }
