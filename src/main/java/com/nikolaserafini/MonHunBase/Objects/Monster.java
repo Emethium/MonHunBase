@@ -29,9 +29,8 @@ public class Monster {
 	@OneToMany(mappedBy = "monster", fetch = FetchType.LAZY)
 	private LinkedList<String> breakableParts;	//List of monster breakable parts
 
-	/*
-	Default constructor
-	*/
+	/* Default constructor */
+
 	public Monster(String monName) {
 		this.name = monName;
 		this.elemWeakness = new LinkedList<Element>();
@@ -39,6 +38,8 @@ public class Monster {
 		this.breakableParts = new LinkedList<String>();
 	}
 
+
+	/* Adding elements to list methods */
 
 	public boolean addWeakness(String w) {
 		String weakness = w.toUpperCase();
@@ -71,9 +72,7 @@ public class Monster {
 
 
 
-	/*
-	Getters and setters
-	*/
+	/* Getters and setters */
 
 	public Integer getId() {
 		return id;

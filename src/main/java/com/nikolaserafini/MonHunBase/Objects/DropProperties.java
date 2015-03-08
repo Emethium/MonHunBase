@@ -6,21 +6,25 @@ import javax.persistence.Entity;
 @Entity
 public class DropProperties {
 	@Column
-	private String hunterRank;
+	private String hunterRank;				// Not sure if I should add this
 	@Column
-	private String monsterName;
+	private String monsterName;				// The name of the monster which the item is carved
 	@Column
-	private String method;
+	private String method;					// How do you obtain the item. Ex : cutting tails.
 	@Column
-	private String sucessRate;
-	
+	private String sucessRate;				// Chance to obtain the item through the method.
+
+	/* Default constructor */
+
 	public DropProperties(String rank, String name, String how, String percent) {
 		hunterRank = rank;
 		monsterName = name;
 		method = how;
 		sucessRate = percent;
 	}
-	
+
+	/* Getters and setters */
+
 	public String getHunterRank() {
 		return hunterRank;
 	}
@@ -45,5 +49,5 @@ public class DropProperties {
 	public void setSucessRate(String sucessRate) {
 		this.sucessRate = sucessRate;
 	}
-	
+
 }

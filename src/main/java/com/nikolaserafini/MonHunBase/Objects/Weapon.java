@@ -55,10 +55,8 @@ public class Weapon extends Item {
 	@OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY)
 	private List<Weapon> followingWeaponTree;   //TODO think of this attribute again
 
-	/*
-	Default constructor
-	*/
-	
+	/* Default constructor */
+
 	public Weapon(Integer id, String name, Integer rarity, Integer maxAmount,
 			Integer buyValue, Integer sellValue, Integer id2,
 			String portraitSource, String name2, Integer atkPower,
@@ -89,10 +87,8 @@ public class Weapon extends Item {
 		this.coatings = coatings;
 		this.followingWeaponTree = followingWeaponTree;
 	}
-	
-	/*
-	Getters and setters
-	*/
+
+	/* Getters and setters */
 
 	public Integer getId() {
 		return id;
@@ -214,7 +210,7 @@ public class Weapon extends Item {
 	public void setCoatings(String coatings) {
 		this.coatings = coatings;
 	}
-	
+
 
 
 }
