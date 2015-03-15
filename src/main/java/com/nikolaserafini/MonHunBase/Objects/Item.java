@@ -37,9 +37,9 @@ public class Item {
 	Default constructor
 	*/
 
+
 	public Item(Integer id, String name, Integer rarity,
 			Integer maxAmount, Integer buyValue, Integer sellValue) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.rarity = rarity;
